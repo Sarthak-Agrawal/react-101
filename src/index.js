@@ -6,7 +6,7 @@ class Square extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value : null,
+            value : null, //Initializer of the variable value in state
         };
     }
 
@@ -27,8 +27,15 @@ class Square extends React.Component {
   }
   
   class Board extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares : Array(9).fill(null)
+        }
+    }
+
     renderSquare(i) {
-      return <Square value={i}/>;
+      return <Square value={this.state.squares[i]} />;
     }
   
     render() {
