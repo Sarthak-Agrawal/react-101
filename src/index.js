@@ -2,18 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-    render() {
-      return (
+// Functional Component
+function Square(props) {
+    return (
         <button 
-            className="square" 
-            onClick = {() => this.props.onClick()}
+            className = "square"
+            onClick = {props.onClick} // Now this need not be like the arrow function
         >
-            {this.props.value}
+            {props.value}
         </button>
-      );
-    }
-  }
+    );
+}
+
+// class Square extends React.Component {
+//     render() {
+//       return (
+//         <button 
+//             className="square" 
+//             onClick = {() => this.props.onClick()}
+//         >
+//             {this.props.value}
+//         </button>
+//       );
+//     }
+//   }
   
   class Board extends React.Component {
     constructor(props) {
@@ -24,7 +36,7 @@ class Square extends React.Component {
     }
 
     handleClick(i) {
-        const tempSquares = this.state.squares;
+        const tempSquares = this.state.squares.slice(); //Used Imutabiility
         tempSquares[i] = 'X';
         this.setState({squares: tempSquares});
     }
