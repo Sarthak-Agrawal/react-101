@@ -2,8 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+
+interface SquareProps {
+  value: string,
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+}
 // Functional Component
-function Square(props) {
+function Square(props: SquareProps) {
     return (
         <button 
             className = "square"
@@ -27,7 +32,7 @@ function Square(props) {
 //     }
 //   }
   
-  function calculateWinner (squares) {
+  function calculateWinner (squares: Array<string>) {
       const lines = [
           [0, 1, 2],
           [3, 4, 5],
@@ -50,9 +55,14 @@ function Square(props) {
       return null;
   }
 
-  class Board extends React.Component {
+  interface BoardProps {
+    squares: Array<string>,
+    onClick: Function
+  }
 
-    renderSquare(i) {
+  class Board extends React.Component<BoardProps> {
+
+    renderSquare(i: number) {
       return <Square 
                 value={this.props.squares[i]} 
                 onClick={() => this.props.onClick(i)}
@@ -82,9 +92,18 @@ function Square(props) {
     }
   }
   
-  class Game extends React.Component {
+  interface History {
+    squares: Array<string>
+  }
 
-    constructor(props) {
+  interface GameState {
+    history: Array<History>,
+    xIsNext: boolean
+  }
+
+  class Game extends React.Component<{}, GameState> {
+
+    constructor(props: {}) {
         super(props);
         this.state = {
             history: [{
@@ -94,7 +113,7 @@ function Square(props) {
         };
     }
 
-    handleClick(i) {
+    handleClick(i: number) {
         const history = this.state.history;
         const current = history[history.length - 1];
         const tempSquares = current.squares.slice(); //Used Imutabiility
@@ -118,7 +137,7 @@ function Square(props) {
       const history = this.state.history;
       const current = history[history.length - 1];
       const winner = calculateWinner(current.squares);
-      let status;
+      let status:string;
       if (winner) {
           status = "Winner: " + winner;
       } else {
@@ -130,7 +149,7 @@ function Square(props) {
           <div className="game-board">
             <Board 
                 squares = {current.squares}
-                onClick = { (i)  => this.handleClick(i)}
+                onClick = { (i: number)  => this.handleClick(i)}
             />
           </div>
           <div className="game-info">
