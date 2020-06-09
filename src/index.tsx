@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
+import Clock from './timer';
 
 interface SquareProps {
   value: string,
@@ -167,3 +167,8 @@ function Square(props: SquareProps) {
     <Game />,
     document.getElementById('root')
   );
+
+  ReactDOM.render(
+    <Clock date={new Date()} />,
+    document.getElementById("timer")
+  )
