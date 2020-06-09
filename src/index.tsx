@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import* as React from 'react';
+import * as ReactDOM from 'react-dom';
 import './index.css';
 
 // Functional Component
-function Square(props) {
+function Square(props: {value: string, onClick: Function}) {
     return (
-        <button 
+        <button
             className = "square"
-            onClick = {props.onClick} // Now this need not be like the arrow function
+            onClick = {(event: any) => props.onClick} // Now this need not be like the arrow function
         >
             {props.value}
         </button>
@@ -17,8 +17,8 @@ function Square(props) {
 // class Square extends React.Component {
 //     render() {
 //       return (
-//         <button 
-//             className="square" 
+//         <button
+//             className="square"
 //             onClick = {() => this.props.onClick()}
 //         >
 //             {this.props.value}
@@ -26,8 +26,8 @@ function Square(props) {
 //       );
 //     }
 //   }
-  
-  function calculateWinner (squares) {
+
+  function calculateWinner (squares: number[]) {
       const lines = [
           [0, 1, 2],
           [3, 4, 5],
@@ -50,16 +50,16 @@ function Square(props) {
       return null;
   }
 
-  class Board extends React.Component {
+  class Board extends React.Component<{squares: number[], onClick: Function}> {
 
-    renderSquare(i) {
-      return <Square 
-                value={this.props.squares[i]} 
+    renderSquare(i: number) {
+      return <Square
+                value={this.props.squares[i] ? this.props.squares[i].toString() : ''}
                 onClick={() => this.props.onClick(i)}
                 />;
     }
-  
-    render() {  
+
+    render() {
       return (
         <div>
           <div className="board-row">
@@ -81,10 +81,10 @@ function Square(props) {
       );
     }
   }
-  
-  class Game extends React.Component {
 
-    constructor(props) {
+  class Game extends React.Component<{}, {history: any[], xIsNext: boolean}> {
+
+    constructor(props: any) {
         super(props);
         this.state = {
             history: [{
@@ -94,7 +94,7 @@ function Square(props) {
         };
     }
 
-    handleClick(i) {
+    handleClick(i: number) {
         const history = this.state.history;
         const current = history[history.length - 1];
         const tempSquares = current.squares.slice(); //Used Imutabiility
@@ -128,9 +128,9 @@ function Square(props) {
       return (
         <div className="game">
           <div className="game-board">
-            <Board 
+            <Board
                 squares = {current.squares}
-                onClick = { (i)  => this.handleClick(i)}
+                onClick = { (i: number)  => this.handleClick(i)}
             />
           </div>
           <div className="game-info">
@@ -141,11 +141,10 @@ function Square(props) {
       );
     }
   }
-  
+
   // ========================================
-  
+
   ReactDOM.render(
     <Game />,
     document.getElementById('root')
   );
-  
