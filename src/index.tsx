@@ -169,6 +169,6 @@ function Square(props: SquareProps) {
   );
 
   ReactDOM.render(
-    <Clock date={new Date()} />,
+    <Clock />,
     document.getElementById("timer")
   )
