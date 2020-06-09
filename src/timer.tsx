@@ -1,15 +1,33 @@
 import React from 'react';
 
 interface ClockState {
-    date: Date
+    date: Date,
 }
 
 class Clock extends React.Component<{}, ClockState> {
+    timerId: number; // This is neither a prop nor a state. Its just an additional field used to set the timer
+
     constructor (props: {}) {
         super(props);
+        this.timerId = 0;
         this.state = {
             date: new Date()
         }
+    }
+
+    componentDidMount() {
+        this.timerId = window.setInterval(() => this.tick(), 1000);
+        console.log(this.timerId);
+    }
+
+    componentWillUnmount() {
+        window.clearInterval(this.timerId);
+    }
+
+    tick() {
+        this.setState({
+            date: new Date()
+        });
     }
 
     render() {
