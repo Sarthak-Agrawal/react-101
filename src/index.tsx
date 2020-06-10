@@ -4,6 +4,7 @@ import './index.css';
 import Clock from './timer';
 import Button from './statefulButton';
 import NameForm from './form';
+import Counter from './hooks';
 
 interface SquareProps {
   value: string,
@@ -183,4 +184,9 @@ function Square(props: SquareProps) {
   ReactDOM.render(
     <NameForm />,
     document.getElementById("form")
+  )
+
+  ReactDOM.render(
+    <Counter />,
+    document.getElementById("counter")
   )
