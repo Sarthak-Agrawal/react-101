@@ -16,7 +16,13 @@ class Clock extends React.Component<{}, ClockState> {
     }
 
     componentDidMount() {
-        this.timerId = window.setInterval(() => this.tick(), 1000);
+        // this.timerId = window.setInterval(() => {
+        //     this.setState({
+        //         date: new Date()
+        //     })
+        // }, 1000);
+
+        this.timerId = window.setInterval( () => this.tick(), 1000); // Arrow function required to access the setState method
         console.log(this.timerId);
     }
 
