@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Clock from './timer';
 import Button from './statefulButton';
+import NameForm from './form';
 
 interface SquareProps {
   value: string,
@@ -177,4 +178,9 @@ function Square(props: SquareProps) {
   ReactDOM.render(
     <Button />,
     document.getElementById("button")
+  )
+
+  ReactDOM.render(
+    <NameForm />,
+    document.getElementById("form")
   )
