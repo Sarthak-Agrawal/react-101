@@ -1,11 +1,10 @@
 import React from 'react';
 
-// class AddSubmittedName extends React.Component<> {
-//     constructor(props) {
-//         super(props);
-
-//     }
-// }
+function AddSubmittedName(props: {value:string}) {
+    return (
+        <p>{props.value}</p>
+    )
+}
 
 class NameForm extends React.Component<{}, {value: string}> {
     constructor(props: {}) {
@@ -24,7 +23,6 @@ class NameForm extends React.Component<{}, {value: string}> {
     }
 
     handleSubmit(event: React.FormEvent) {
-        // <AddSubmitName names={} />
         console.log(this.state.value);
         event.preventDefault();
         
@@ -38,6 +36,8 @@ class NameForm extends React.Component<{}, {value: string}> {
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
                 <input type="submit" value="Submit" />
+                <br/><br/>
+                <AddSubmittedName value={this.state.value} />
             </form>
         );
     }
