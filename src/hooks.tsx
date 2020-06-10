@@ -1,7 +1,11 @@
-import React,{ useState } from "react";
+import React,{ useState, useEffect } from "react";
 
 function Counter() {
     const  [count, setCount]  = useState(0);
+
+    useEffect(()=> {
+        document.title = {count}.count + " clicks"; //{count} is a JSON object with id as count
+    });
 
     return (
         <div>
