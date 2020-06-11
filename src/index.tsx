@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
+import './css/main.css';
 import Clock from './timer';
 import Button from './statefulButton';
 import NameForm from './form';
