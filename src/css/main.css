@@ -2,7 +2,18 @@ body {
   background-color: #d8d1d1;
 }
 
-#sass-text {
+.sass {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sass .sass-text {
+  font-weight: 400;
+}
+
+.sass .sass-text:hover {
+  color: red;
   font-weight: 700;
 }
 /*# sourceMappingURL=main.css.map */

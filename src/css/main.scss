@@ -9,6 +9,18 @@ body {
     background-color: $primary-background-colour;
 }
 
-#sass-text {
-    font-weight: map-get($font-weights, bold );
+.sass {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    
+    //nesting
+    #{&}-text { //interpolation : as sass in cchild as same as parent => #{&}
+        font-weight: map-get($font-weights, medium );
+
+        &:hover {
+            color: red;
+            font-weight: map-get($font-weights, bold );
+        }
+    } 
 }
