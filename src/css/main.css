@@ -1,4 +1,8 @@
 body {
-  background-color: blue;
+  background-color: #d8d1d1;
+}
+
+#sass-text {
+  font-weight: 700;
 }
 /*# sourceMappingURL=main.css.map */

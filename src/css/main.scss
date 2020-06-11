@@ -1,3 +1,14 @@
+$primary-background-colour: #d8d1d1; //scss variable
+$font-weights : (
+    "regular": 300,
+    "medium": 400,
+    "bold": 700
+);
+
 body {
-    background-color: blue;
+    background-color: $primary-background-colour;
+}
+
+#sass-text {
+    font-weight: map-get($font-weights, bold );
 }
