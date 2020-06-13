@@ -4,6 +4,19 @@
     @return map-get($font-weights, $weight-name);
 }
 
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background-color: lighten($primary-background-colour, 90%);
+        color: darken($color: rgb(37, 36, 36), $amount: 90%);
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile-max-width) {
+        @content
+    }
+}
+
 body {
     background-color: $primary-background-colour;
 
@@ -58,6 +71,10 @@ body {
     width: 80%;
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
     
     //nesting
     #{&}-text { //interpolation : as sass in child as same as parent => #{&}
@@ -68,4 +85,12 @@ body {
             font-weight: map-get($font-weights, bold );
         }
     } 
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.light {
+    @include theme($light-theme: true);
 }
