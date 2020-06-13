@@ -1,5 +1,9 @@
 @import './variables';
 
+@function weight ($weight-name) {
+    @return map-get($font-weights, $weight-name);
+}
+
 body {
     background-color: $primary-background-colour;
 
@@ -56,8 +60,8 @@ body {
     text-align: center;
     
     //nesting
-    #{&}-text { //interpolation : as sass in cchild as same as parent => #{&}
-        font-weight: map-get($font-weights, medium );
+    #{&}-text { //interpolation : as sass in child as same as parent => #{&}
+        font-weight: weight(regular);
 
         &:hover {
             color: red;
