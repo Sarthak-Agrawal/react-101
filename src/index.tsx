@@ -188,6 +188,6 @@ function Square(props: SquareProps) {
   )
 
   ReactDOM.render(
-    <Counter />,
+    <Counter initial_count = '-1' />,
     document.getElementById("counter")
   )
