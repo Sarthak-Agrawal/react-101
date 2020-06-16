@@ -7,7 +7,7 @@ export enum ItemStatus {
     Deleted
 }
 
-interface TodoItemProps {
+export interface TodoItemProps {
     id: number
 }
 
@@ -16,7 +16,10 @@ interface TodoItemState {
     state: ItemStatus
 }
 
-function TodoItem (props: TodoItemProps) {
+// export const TodoItem (props: TodoItemProps) => {
+
+// }
+export function TodoItem (props: TodoItemProps): React.ReactElement {
 
     const [content, setValue] = React.useState("");
     const [state, setState] = React.useState(ItemStatus.Creation);
@@ -47,14 +50,16 @@ function TodoItem (props: TodoItemProps) {
                     setState(ItemStatus.Completed);
                     updatCompleteDisable(true);
                 }
-            }} disabled={addDisabled}> Complete </button>
+            }} disabled={deleteDisabled}> Complete </button>
 
             <button onClick={event => {
                 if(state===ItemStatus.Active) {
                     setState(ItemStatus.Deleted);
                     updatDeleteDisable(true);
                 }
-            }} disabled={addDisabled}> Delete </button>
+            }} disabled={completedDisabled}> Delete </button>
         </div>
     )
 }
+
+// export default TodoItem;

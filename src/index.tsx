@@ -6,6 +6,7 @@ import Clock from './timer';
 import Button from './statefulButton';
 import NameForm from './form';
 import Counter from './hooks';
+import TodoList from './todo/todoList';
 
 interface SquareProps {
   value: string,
@@ -190,4 +191,9 @@ function Square(props: SquareProps) {
   ReactDOM.render(
     <Counter initialCount = '-1' />,
     document.getElementById("counter")
+  )
+
+  ReactDOM.render(
+    <TodoList />,
+    document.getElementById("my-todo-list")
   )
