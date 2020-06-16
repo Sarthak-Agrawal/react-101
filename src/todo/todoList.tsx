@@ -33,6 +33,14 @@ function TodoList(props:{}) {
  // const[todoList, updateList] = React.useState(initialList);
   const[todoList, updateList] = React.useState(Array<typeof TodoItem>());
 
+//   function handleDelete(id:number) {
+//     updateList(
+//         todoList.filter( item => {
+//             return item.id!==id;
+//         }
+//     ))
+//   }
+
   return (
       <div className="todo-list">
         {todoList}
