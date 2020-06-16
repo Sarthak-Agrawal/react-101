@@ -24,8 +24,8 @@
 // }
 
 import * as React from 'react';
-const TodoItem = require('./todoItem').TodoItem;
-// import { TodoItem } from './todoItem';
+// const TodoItem = require('./todoItem').TodoItem;
+import { TodoItem, TodoItemProps } from './todoItem';
 
 
 function TodoList(props:{}) {
@@ -33,20 +33,16 @@ function TodoList(props:{}) {
  // const[todoList, updateList] = React.useState(initialList);
   const[todoList, updateList] = React.useState(Array<typeof TodoItem>());
 
-//   function handleDelete(id:number) {
-//     updateList(
-//         todoList.filter( item => {
-//             return item.id!==id;
-//         }
-//     ))
-//   }
+    function addNewItem() {
+        const newItem =(newItemProps: TodoItemProps) => TodoItem({id: todoList.length})
+        todoList.push(newItem);
+        updateList(todoList);
+    }
 
   return (
       <div className="todo-list">
         {todoList}
-        <button onClick= {() => updateList(
-           [...todoList, <TodoItem id={todoList.length} />]
-        )}>
+        <button onClick={() => addNewItem()}>
           Add Item
         </button>
       </div>

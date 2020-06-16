@@ -17,7 +17,7 @@ interface TodoItemState {
     state: ItemStatus
 }
 
-export function TodoItem (props: TodoItemProps): React.ReactElement {
+export function TodoItem (props: TodoItemProps) {
 
     const [content, updateContent] = React.useState("");
     const [state, setState] = React.useState(ItemStatus.Creation);
