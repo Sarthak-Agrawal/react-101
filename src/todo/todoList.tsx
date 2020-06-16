@@ -6,16 +6,12 @@
 // }
 
 // function TodoList(props:{}) {
-//     const[todoList, updateList] = React.useState<TodoListState> ({
-//         items: (id: number) => {
-//             return 
-//         } 
-//     });
+//     const[todoList, updateList] = React.useState<TodoListState> (Array<TodoListState>());
 
 //     function addItem() {
 //         todoList.push(<TodoItem key={todoList.length} id={todoList.length} />);
 //         return todoList;
-//     })
+//     }
 
 //     return (
 //         <div className="todo-list">
@@ -28,7 +24,8 @@
 // }
 
 import * as React from 'react';
-const TodoItem = require('./todoItem');
+const TodoItem = require('./todoItem').TodoItem;
+// import { TodoItem } from './todoItem';
 
 
 function TodoList(props:{}) {

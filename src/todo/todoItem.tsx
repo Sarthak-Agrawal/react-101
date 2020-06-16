@@ -16,10 +16,10 @@ interface TodoItemState {
     state: ItemStatus
 }
 
-const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
+// export const TodoItem (props: TodoItemProps) => {
 
 // }
-// function TodoItem (props: TodoItemProps) {
+export function TodoItem (props: TodoItemProps): React.ReactElement {
 
     const [content, setValue] = React.useState("");
     const [state, setState] = React.useState(ItemStatus.Creation);
@@ -62,4 +62,4 @@ const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
     )
 }
 
-export default TodoItem;
+// export default TodoItem;
