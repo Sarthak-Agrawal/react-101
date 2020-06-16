@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+For debugging, install the [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) plugin for vscode and use the [launch.json](.vscode/launch.json) in the repo to debug. You can refer [here](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial#_debugging-react) for setup of debug environment.
+
 ## Available Scripts
 
 In the project directory, you can run:
