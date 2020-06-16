@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from './buttonOnclickProps';
 
 export enum ItemStatus {
     Creation,
@@ -86,9 +87,9 @@ function TodoItemView(props: TodoItemViewProps) {
     return (
         <li className="item">
             <input type="text" value={props.content} onChange={e => props.onChange(e.target.value)} />
-            <button disabled={props.addButtonDisabled} onClick={() => props.addButtonClick()} >Add</button>
-            <button disabled={props.deleteButtonDisabled} onClick={() => props.deleteButtonClick()} >Delete</button>
-            <button disabled={props.completeButtonDisabled} onClick={() => props.completeButtonClick()} >Complete</button>
+            <Button label="Add" isDisabled = {props.addButtonDisabled} clickAction={() => props.addButtonClick()} />
+            <Button label="Delete" isDisabled={props.deleteButtonDisabled} clickAction={() => props.deleteButtonClick()} />
+            <Button label="Complete" isDisabled={props.completeButtonDisabled} clickAction={() => props.completeButtonClick()} />
         </li>
     );
 }
