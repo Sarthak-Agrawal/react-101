@@ -1,16 +1,24 @@
 import * as React from 'react';
-import {default as BootstrapButton} from 'react-bootstrap/Button';
+import {ButtonProps, default as BootstrapButton} from 'react-bootstrap/Button';
 
-interface ButtonProps {
-    label: string,
-    isDisabled: boolean,
-    clickAction: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+interface CustomButtonProps {
+    label: any,
+    isDisabled?: boolean,
+    clickAction: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
+    buttonVariant: ButtonProps["variant"],
+    isHidden?: boolean
 }
 
-export default function CustomButton(props: ButtonProps) {
+export default function CustomButton(props: CustomButtonProps) {
     return (
         <>
-            <BootstrapButton variant="primary" onClick={props.clickAction} disabled={props.isDisabled}>
+            <BootstrapButton 
+                className="ml-1" 
+                variant={props.buttonVariant} 
+                onClick={props.clickAction} 
+                disabled={props.isDisabled || false} 
+                hidden={props.isHidden || false}
+            >
                 {props.label}
             </BootstrapButton>
         </>

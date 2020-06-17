@@ -13,7 +13,18 @@
   background-color: #ffc400;
 }
 
+.item:hover {
+  background-color: #00804f;
+}
+
 .item .item-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 10px 10px 10px 10px;
+}
+
+.item .item-view .itemText.strikethrough {
+  text-decoration: line-through;
 }
 /*# sourceMappingURL=todo.css.map */
