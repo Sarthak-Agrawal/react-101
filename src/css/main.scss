@@ -77,7 +77,7 @@ body {
     flex-direction: row;
     
     //nesting
-    #{&}-text { //interpolation : as sass in child as same as parent => #{&}
+    #{&}-text1 { //interpolation : as sass in child as same as parent => #{&}
         font-weight: weight(regular);
 
         &:hover {
@@ -85,6 +85,14 @@ body {
             font-weight: map-get($font-weights, bold );
         }
     } 
+
+    #{&}-text2 {
+        @extend .sass-text1; //extension 
+
+        &:hover {
+            color: orange;
+        }
+    }
 
     @include mobile {
         flex-direction: column;

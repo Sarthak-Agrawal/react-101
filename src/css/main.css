@@ -72,13 +72,17 @@ body .game-info {
           flex-direction: row;
 }
 
-.sass .sass-text {
+.sass .sass-text1, .sass .sass-text2 {
   font-weight: 200;
 }
 
-.sass .sass-text:hover {
+.sass .sass-text1:hover, .sass .sass-text2:hover {
   color: red;
   font-weight: 700;
+}
+
+.sass .sass-text2:hover {
+  color: orange;
 }
 
 @media (max-width: 800px) {
