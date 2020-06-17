@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from './buttonOnclickProps';
+import CustomButton from './buttonOnclickProps';
 
 export enum ItemStatus {
     Creation,
@@ -56,6 +56,8 @@ export default function TodoItem (props: TodoItemProps): React.ReactElement {
             setState(ItemStatus.Deleted);
             updateDeleteDisable(true);
         }
+
+
     }
 
     return(
@@ -90,10 +92,14 @@ function TodoItemView(props: TodoItemViewProps) {
 
     return (
         <li className="item" hidden={props.hidden}>
-            <input type="text" value={props.content} onChange={e => props.onChange(e.target.value)} />
-            <Button label="Add" isDisabled = {props.addButtonDisabled} clickAction={() => props.addButtonClick()} />
-            <Button label="Delete" isDisabled={props.deleteButtonDisabled} clickAction={() => props.deleteButtonClick()} />
-            <Button label="Complete" isDisabled={props.completeButtonDisabled} clickAction={() => props.completeButtonClick()} />
+            <div className="item-view">
+                <input id="itemText" type="text" value={props.content} onChange={e => props.onChange(e.target.value)} />
+                {/* <input type="checkbox" id={props.content} value={props.content} onClick={() => props.addButtonClick()}/>
+                <label htmlFor={props.content} onChange={e => props.onChange(e.target.value)} /> */}
+                <CustomButton label="Add" isDisabled = {props.addButtonDisabled} clickAction={() => props.addButtonClick()} />
+                <CustomButton label="Delete" isDisabled={props.deleteButtonDisabled} clickAction={() => props.deleteButtonClick()} />
+                <CustomButton label="Complete" isDisabled={props.completeButtonDisabled} clickAction={() => props.completeButtonClick()} />
+            </div>
         </li>
     );
 }

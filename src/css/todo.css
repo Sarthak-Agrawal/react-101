@@ -7,4 +7,13 @@
       -ms-flex-flow: column;
           flex-flow: column;
 }
+
+.item {
+  list-style: none;
+  background-color: #ffc400;
+}
+
+.item .item-view {
+  padding: 10px 10px 10px 10px;
+}
 /*# sourceMappingURL=todo.css.map */

@@ -2,3 +2,12 @@
     display: inline-flex;
     flex-flow: column;
 }
+
+.item {
+    list-style: none;
+    background-color: rgb(255, 196, 0);
+
+    .item-view {
+        padding: 10px 10px 10px 10px;
+    }
+}
