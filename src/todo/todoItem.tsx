@@ -17,12 +17,13 @@ interface TodoItemState {
     state: ItemStatus
 }
 
-export function TodoItem (props: TodoItemProps): React.ReactElement {
+export default function TodoItem (props: TodoItemProps): React.ReactElement {
 
     const [content, updateContent] = React.useState("");
     const [state, setState] = React.useState(ItemStatus.Creation);
     const [addDisabled, updateAddDisable] = React.useState(true);
     const [deleteDisabled, updateDeleteDisable] = React.useState(true);
+    const [isItemHidden, hideTheItem] = React.useState(false);
     const [completedDisabled, updateCompleteDisable] = React.useState(true);
 
     function handleChange(updatedContent: string) {
@@ -46,6 +47,7 @@ export function TodoItem (props: TodoItemProps): React.ReactElement {
         if(state===ItemStatus.Active) {
             setState(ItemStatus.Completed);
             updateCompleteDisable(true);
+            hideTheItem(true);
         }
     }
 
@@ -67,6 +69,7 @@ export function TodoItem (props: TodoItemProps): React.ReactElement {
             deleteButtonClick = {handleDeleteButtonClick}
             completeButtonDisabled = {completedDisabled}
             completeButtonClick = {handleCompleteButtonClick}
+            hidden = {isItemHidden}
         />
     )
 }
@@ -79,13 +82,14 @@ interface TodoItemViewProps {
     deleteButtonDisabled: boolean,
     deleteButtonClick: Function,
     completeButtonDisabled: boolean,
-    completeButtonClick: Function
+    completeButtonClick: Function,
+    hidden: boolean
 }
 
 function TodoItemView(props: TodoItemViewProps) {
 
     return (
-        <li className="item">
+        <li className="item" hidden={props.hidden}>
             <input type="text" value={props.content} onChange={e => props.onChange(e.target.value)} />
             <Button label="Add" isDisabled = {props.addButtonDisabled} clickAction={() => props.addButtonClick()} />
             <Button label="Delete" isDisabled={props.deleteButtonDisabled} clickAction={() => props.deleteButtonClick()} />
