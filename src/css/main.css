@@ -90,6 +90,10 @@ body .game-info {
   }
 }
 
+#my-todo-list {
+  text-align: center;
+}
+
 .light {
   background-color: white;
   color: black;

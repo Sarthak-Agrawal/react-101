@@ -91,6 +91,10 @@ body {
     }
 }
 
+#my-todo-list {
+    text-align: center;
+}
+
 .light {
     @include theme($light-theme: true);
 }

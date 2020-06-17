@@ -1,5 +1,6 @@
 import * as React from 'react';
 import TodoItem from './todoItem';
+import '../css/todo.css';
 
 type TodoItemState = {
   todoItem: {
@@ -20,6 +21,8 @@ function TodoList(props:{}) {
 
 
   return (
+    <div className="todo">
+      <h1 className="todo-heading">Todos</h1>
       <div className="todo-list">
         {todoList.map(item => {
           return <TodoItem id={item.todoItem.id} key={item.todoItem.id}/>;
@@ -30,6 +33,7 @@ function TodoList(props:{}) {
           Add Item
         </button>
       </div>
+    </div>
   )
 }
 
