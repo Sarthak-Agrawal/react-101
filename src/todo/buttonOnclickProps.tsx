@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ButtonProps, default as BootstrapButton} from 'react-bootstrap/Button';
 
 interface CustomButtonProps {
-    label: any,
+    label?: any,
     isDisabled?: boolean,
     clickAction: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
     buttonVariant: ButtonProps["variant"],

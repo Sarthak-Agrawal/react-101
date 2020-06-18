@@ -1,7 +1,8 @@
 import * as React from 'react';
 import CustomButton from './buttonOnclickProps';
 import { InputGroup, Form } from 'react-bootstrap';
-
+import { Icon } from 'react-icons-kit'
+import { cross } from 'react-icons-kit/icomoon/cross';
 
 export enum ItemStatus {
     Creation,
@@ -138,7 +139,8 @@ function TodoItemView(props: TodoItemViewProps) {
                         <CustomButton label="Add" isHidden={props.addButtonHidden} isDisabled={props.addButtonDisabled} clickAction={() => props.addButtonClick()} buttonVariant="primary" />
                         <CustomButton label="Edit" isHidden={props.editButtonHidden} clickAction={() => props.editButtonClick()} buttonVariant="primary" />
                         <CustomButton label="Complete" isHidden={props.completeButtonHidden} isDisabled={props.completeButtonDisabled} clickAction={(e) => props.completeButtonClick(e)} buttonVariant="dark" />
-                        <CustomButton label="Delete" isDisabled={props.deleteButtonDisabled} clickAction={() => props.deleteButtonClick()} buttonVariant="danger" />
+                        <CustomButton label={<Icon icon={cross} />} isDisabled={props.deleteButtonDisabled} clickAction={() => props.deleteButtonClick()} buttonVariant="light" />
+                        
                     </InputGroup.Append>
                 </InputGroup>
             </div>
