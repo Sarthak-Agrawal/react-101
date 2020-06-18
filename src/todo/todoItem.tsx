@@ -11,7 +11,8 @@ export enum ItemStatus {
 }
 
 export interface TodoItemProps {
-    id: number
+    id: number,
+    delete: Function
 }
 
 interface TodoItemState {
@@ -28,7 +29,6 @@ export default function TodoItem (props: TodoItemProps): React.ReactElement {
     const [addButtonHidden, setHideAddButton] = React.useState(false);
     const [editButtonHidden, setHideEditButton] = React.useState(true);
     const [deleteDisabled, updateDeleteDisable] = React.useState(false);
-    const [isItemHidden, hideTheItem] = React.useState(false);
     const [completedDisabled, updateCompleteDisable] = React.useState(true);
     const [completeButtonHidden, setHideCompleteButton] = React.useState(false);
 
@@ -52,11 +52,9 @@ export default function TodoItem (props: TodoItemProps): React.ReactElement {
     }
 
     function handleDeleteButtonClick() {
-
             setState(ItemStatus.Deleted);
             updateCompleteDisable(true);
-            hideTheItem(true);
-        
+            props.delete(props.id);
     }
 
     function handleCompleteButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -94,7 +92,6 @@ export default function TodoItem (props: TodoItemProps): React.ReactElement {
             deleteButtonClick = {handleDeleteButtonClick}
             completeButtonDisabled = {completedDisabled}
             completeButtonClick = {handleCompleteButtonClick}
-            itemHidden = {isItemHidden}
             addButtonHidden = {addButtonHidden}
             editButtonHidden = {editButtonHidden}
             editButtonDisabled= {editDisabled}
@@ -113,7 +110,6 @@ interface TodoItemViewProps {
     deleteButtonClick: Function,
     completeButtonDisabled: boolean,
     completeButtonClick: Function,
-    itemHidden: boolean,
     addButtonHidden: boolean,
     editButtonHidden: boolean,
     editButtonDisabled: boolean,
@@ -124,7 +120,7 @@ interface TodoItemViewProps {
 function TodoItemView(props: TodoItemViewProps) {
 
     return (
-        <li className="item" hidden={props.itemHidden}>
+        <li className="item">
             <div className="item-view">
                 <InputGroup>
                     <Form.Control

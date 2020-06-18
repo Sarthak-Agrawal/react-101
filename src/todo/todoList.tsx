@@ -12,13 +12,19 @@ type TodoItemState = {
 function TodoList(props:{}) {
   const[todoList, updateList] = React.useState(Array<TodoItemState>());
 
+  function handleDeleteItem(id: number) {
+    updateList(todoList => {
+      return todoList.filter(item => item.todoItem.id!==id);
+    })
+  }
+
   return (
     <Jumbotron fluid={true}>
     <div className="todo mt-5 mb-5">
       <h1 className="todo-heading">Todos</h1>
       <div className="todo-list">
         {todoList.map(item => {
-          return <TodoItem id={item.todoItem.id} key={item.todoItem.id}/>;
+          return <TodoItem id={item.todoItem.id} key={item.todoItem.id} delete={handleDeleteItem} />;
         })}
         <BootstrapButton className="mt-3" variant="primary" size="lg" onClick= {() => updateList(
           [...todoList, {todoItem: {id:todoList.length}}]
