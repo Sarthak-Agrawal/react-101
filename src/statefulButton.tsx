@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps {
-    afterTheClick: () => void
+    afterTheClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 function LoginButton(props: ButtonProps) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './index.css';
@@ -8,6 +8,8 @@ import Button from './statefulButton';
 import NameForm from './form';
 import Counter from './hooks';
 import TodoList from './todo/todoList';
+import { ThemeContext } from './themeContext';
+import ThemeSelector from './themeButton';
 
 interface SquareProps {
   value: string,
@@ -167,6 +169,31 @@ function Square(props: SquareProps) {
     }
   }
   
+function ThemeProvider() {
+  const [theme, setTheme] = useState('dark');
+  const [buttonLabel, setButtonLabel] = useState('Switch to Light Theme');
+
+  function toggleTheme(prevTheme: string) {
+    if(prevTheme==='dark') {
+        document.body.style.background = '#eeeeee';
+        document.body.style.color= 'green';
+        setTheme('light');
+        setButtonLabel('Switch to Light Theme');
+    } else {
+        document.body.style.background = '#222222';
+        document.body.style.color= 'red';
+        setTheme('dark');
+        setButtonLabel('Switch to Dark Theme')
+    }
+}
+
+  return(
+    <ThemeContext.Provider value={{theme, toggleTheme, buttonLabel}}>
+      <ThemeSelector />
+    </ThemeContext.Provider>
+  )
+}
+
   // ========================================
   
   ReactDOM.render(
@@ -197,4 +224,9 @@ function Square(props: SquareProps) {
   ReactDOM.render(
     <TodoList />,
     document.getElementById("my-todo-list")
+  )
+
+  ReactDOM.render(
+    <ThemeProvider />,
+    document.getElementById("button")
   )
